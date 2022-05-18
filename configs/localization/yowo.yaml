@@ -82,7 +82,7 @@ INFERENCE:
     num_seg: 16
     target_size: 224
 
-model_name: "YOWO_test"
+model_name: "YOWO"
 log_interval: 20 #Optional, the interal of logger, default:10
 save_interval: 1
 epochs: 5 #Mandatory, total epoch

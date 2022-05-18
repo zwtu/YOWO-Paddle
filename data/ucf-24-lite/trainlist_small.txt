@@ -1,0 +1,8 @@
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00070.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00071.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00072.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00073.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00074.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00075.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00076.txt
+data/ucf-24-lite/labels/Basketball/v_Basketball_g08_c01/00077.txt

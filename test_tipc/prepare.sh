@@ -119,6 +119,10 @@ if [ ${MODE} = "lite_train_lite_infer" ];then
         wget -nc https://paddlemodels.bj.bcebos.com/video_detection/activitynet_1.3_annotations.json
         wget -nc https://paddlemodels.bj.bcebos.com/video_detection/activity_net_1_3_new.json
         popd
+    elif [ ${model_name} == "YOWO" ]; then
+        # pretrain lite train data
+        wget -nc -P ./data/ucf24 https://bj.bcebos.com/v1/ai-studio-online/8559f34317e642c888783b81b9fef55f8750ef4b7e924feaac8899f3ab0b151f?responseContentDisposition=attachment%3B%20filename%3Dyolo.weights&authorization=bce-auth-v1%2F0ef6765c1e494918bc0d4c3ca3e5c6d1%2F2022-05-10T13%3A27%3A24Z%2F-1%2F%2Fd246476895e4384c058dd1967c7f7f85f82844798ef2eaaff1e71b5494c3fc53
+        wget -nc -P ./data/ucf24 https://bj.bcebos.com/v1/ai-studio-online/cf96b0278a944363bc238cfca727474f889a17f7015746d99523e7068d64e96b?responseContentDisposition=attachment%3B%20filename%3Dresnext-101-kinetics.pdparams&authorization=bce-auth-v1%2F0ef6765c1e494918bc0d4c3ca3e5c6d1%2F2022-05-17T11%3A35%3A40Z%2F-1%2F%2F4a587997708b3c582cbb2f98c8b7d02c395de3ef34e71b918789c761b3feae14
     else
         echo "Not added into TIPC yet."
     fi

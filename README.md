@@ -5,7 +5,7 @@
 ## 1 简介
 ![YOWO](https://github.com/zwtu/YOWO-Paddle/blob/main/images/YOWO.png?raw=true)
 
-YOWO架构是一个具有两个分支的单阶段网络。一个分支通过2D-CNN提取关键帧（即当前帧）的空间特征，而另一个分支则通过3D-CNN获取由先前帧组成的剪辑的时空特征。为准确汇总这些特征，YOWO使用了一种通道融合和关注机制，最大程度地利用了通道间的依赖性。最后将融合后的特征进行帧级检测。[可视化结果](#使用预测引擎推理)。
+YOWO架构是一个具有两个分支的单阶段网络。一个分支通过2D-CNN提取关键帧（即当前帧）的空间特征，而另一个分支则通过3D-CNN获取由先前帧组成的剪辑的时空特征。为准确汇总这些特征，YOWO使用了一种通道融合和关注机制，最大程度地利用了通道间的依赖性。最后将融合后的特征进行帧级检测。<strong>[[可视化结果]](#使用预测引擎推理)</strong>
 
 <strong>Paper:</strong> Köpüklü O, Wei X, Rigoll G. [You only watch once: A unified cnn architecture for real-time spatiotemporal action localization](https://arxiv.org/pdf/1911.06644.pdf)[J]. arXiv preprint arXiv:1911.06644, 2019.
 
@@ -15,20 +15,19 @@ YOWO架构是一个具有两个分支的单阶段网络。一个分支通过2D-C
 
 <strong>复现目标：</strong>UCF101-24数据集，YOWO (16-frame)模型，frame-mAP under IoU threshold of 0.5=80.4 
 
-<strong>aistudio体验教程</strong>: [基于 PaddleVideo 的YOWO复现](https://aistudio.baidu.com/aistudio/projectdetail/3898712?contributionType=1)
+<strong>aistudio体验教程</strong>: [基于 PaddleVideo 的YOWO复现](https://aistudio.baidu.com/aistudio/projectdetail/4033737?contributionType=1)
 
 ## 2 复现精度
-| Model    |3D-CNN backbone | 2D-CNN backbone | Dataset  |Input    | Target <br> Frame-mAP (@ IoU 0.5)    | Our <br> Frame-mAP (@ IoU 0.5)   
+| Model    |3D-CNN backbone | 2D-CNN backbone | Dataset  |Input    | Target <br> Frame-mAP <br>(@ IoU 0.5)    | Our <br> Frame-mAP <br>(@ IoU 0.5)   
 | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: | :-----------: 
 | YOWO | 3D-ResNext-101 | Darknet-19 | UCF101-24 | 16-frames, d=1 | <strong>80.40</strong>| <strong>80.83</strong> 
 
-- 训练日志：[Log]()
-- 模型权重：[Google Drive]()
+- 模型权重：[百度网盘](https://pan.baidu.com/s/1RznZpYpZxoZg9XiUWNkQWQ?pwd=r5g3) | [飞桨 AI Studio](https://aistudio.baidu.com/aistudio/datasetdetail/146682)
 
 ## 3 数据集和预训练权重
 
 ### 3.1 下载数据集 
-[Google Drive](https://drive.google.com/file/d/1o2l6nYhd-0DDXGP-IPReBP4y1ffVmGSE/view) or [飞桨 AI Studio](https://aistudio.baidu.com/aistudio/datasetdetail/36600)，存放路径 ``` data/ucf24/ ```
+[Google Drive](https://drive.google.com/file/d/1o2l6nYhd-0DDXGP-IPReBP4y1ffVmGSE/view) | [飞桨 AI Studio](https://aistudio.baidu.com/aistudio/datasetdetail/36600)，存放路径 ``` data/ucf24/ ```
 
 ### 3.2 生成所需格式的 annotations
 
@@ -38,10 +37,7 @@ python data/ucf24/build_split.py
 
 ### 3.3 下载预训练权重
 
-```
-
-```
-
+[飞桨 AI Studio](https://aistudio.baidu.com/aistudio/datasetdetail/145592)，存放路径 ``` data/ucf24/ ```
 
 ## 4 环境依赖
 
@@ -172,10 +168,10 @@ python3 tools/predict.py -c configs/localization/yowo.yaml -i 'data/ucf24/HorseR
 
 输出示例如下（可视化后）:
 <div align="center" style="width:image width px;">
-  <img  src="https://github.com/zwtu/YOWO-Paddle/blob/main/images/HorseRiding.gif?raw=true" width=240 alt="biking">
+  <img  src="https://github.com/zwtu/YOWO-Paddle/blob/main/images/HorseRiding.gif?raw=true" width=240 alt="Horse Riding">
 </div>
 
-可以看到，使用在UCF-24上训练好的YOWO模型对```data/HorseRiding.avi```进行预测，每张帧输出的类别均为HorseRiding，置信度为0.80左右。
+可以看到，使用在UCF-24上训练好的YOWO模型对```data/ucf24/HorseRiding.avi```进行预测，每张帧输出的类别均为HorseRiding，置信度为0.80左右。
 
 ## 6.TIPC
 
@@ -187,28 +183,28 @@ python3 tools/predict.py -c configs/localization/yowo.yaml -i 'data/ucf24/HorseR
 - 运行 ```prepare.sh```
 
     ```
-    bash test_tipc/prepare.sh ./test_tipc/configs/TokenShift/train_amp_infer_python.txt 'lite_train_lite_infer'
+    bash test_tipc/prepare.sh test_tipc/configs/YOWO/train_infer_python.txt 'lite_train_lite_infer'
     ```
 
 - 运行 ```test_train_inference_python.sh```， 具体参数设置修改于```test_tipc/configs/YOWO/train_infer_python.txt```
 
     ```
+    bash test_tipc/test_train_inference_python.sh test_tipc/configs/YOWO/train_infer_python.txt 'lite_train_lite_infer'
     ```
 
-- TIPC [运行log]() 
 
 ## 7. 代码结构
 
 ```
-|-- PaddleVideo-develop
+|-- YOWO-Paddle
     |-- configs                              
         |-- localization
             |-- yowo.yaml                   # 模型训练所需的yaml       
     |-- data                                # 数据集
         |-- ucf24                  
             |-- splitfiles                  # 原始 annotations
-            |-- UCF-24-lite                 # 用于TIPC的小数据集
             |-- build_split.py              # 生成所需 train/val list
+        |-- UCF-24-lite                     # 用于TIPC的小数据集
     |-- output                              # 输出
     |-- paddlevideo                         
         |-- loader                          # 数据集和数据增强
