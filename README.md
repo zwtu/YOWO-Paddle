@@ -15,7 +15,7 @@ YOWO架构是一个具有两个分支的单阶段网络。一个分支通过2D-C
 
 <strong>复现目标：</strong>UCF101-24数据集，YOWO (16-frame)模型，frame-mAP under IoU threshold of 0.5=80.4 
 
-<strong>aistudio体验教程</strong>: [基于 PaddleVideo 的YOWO复现](https://aistudio.baidu.com/aistudio/projectdetail/4033737?contributionType=1)
+<strong>AI Studio体验教程</strong>: [基于 PaddleVideo 的YOWO复现](https://aistudio.baidu.com/aistudio/projectdetail/4033737?contributionType=1)
 
 ## 2 复现精度
 | Model    |3D-CNN backbone | 2D-CNN backbone | Dataset  |Input    | Target <br> Frame-mAP <br>(@ IoU 0.5)    | Our <br> Frame-mAP <br>(@ IoU 0.5)   
@@ -99,7 +99,7 @@ cd YOWO-Paddle
 
 ### 5.3 模型评估
 
-- 训练日志中记录的验证指标```fscore ```不代表最终的测试分数，因此在训练完成之后可以用测试模式对最好的模型进行测试获取最终的指标。评估时评价指标为```Frame-mAP (@ IoU 0.5)```
+- 训练日志中记录的验证指标```fscore```不代表最终的测试分数，因此在训练完成之后可以用测试模式对最好的模型进行测试获取最终的指标。评估时评价指标为```Frame-mAP (@ IoU 0.5)```
 
     ```
     python3 main.py -c configs/localization/yowo.yaml --test --seed=1 -w 'output/YOWO/YOWO_epoch_00005.pdparams'
