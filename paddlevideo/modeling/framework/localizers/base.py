@@ -29,7 +29,7 @@ class BaseLocalizer(nn.Layer):
         super().__init__()
         self.backbone = builder.build_backbone(backbone)
         self.loss = builder.build_loss(loss)
-        self.init_weights()
+        self.init_weights() 
 
     def init_weights(self):
         """Initialize the model network weights. """

@@ -59,6 +59,12 @@ def build_record(cfg):
     elif 'MSTCN' in cfg.framework or 'ASRF' in cfg.framework:
         record_list.append(("F1@0.50", AverageMeter("F1@0.50", '.5f')))
 
+    elif 'YOWOLocalizer' in cfg.framework:
+        record_list.append(("nCorrect", AverageMeter('nCorrect', '.1f')))
+        record_list.append(("recall", AverageMeter("recall", '.5f')))
+        record_list.append(("precision", AverageMeter("precision", '.5f')))
+        record_list.append(("fscore", AverageMeter("fscore", '.5f')))
+
     record_list.append(("batch_time", AverageMeter('batch_cost', '.5f')))
     record_list.append(("reader_time", AverageMeter('reader_cost', '.5f')))
     record_list = OrderedDict(record_list)
@@ -114,11 +120,19 @@ class AverageMeter(object):
 def log_batch(metric_list, batch_id, epoch_id, total_epoch, mode, ips):
     batch_cost = str(metric_list['batch_time'].value) + ' sec,'
     reader_cost = str(metric_list['reader_time'].value) + ' sec,'
-
     metric_values = []
-    for m in metric_list:
-        if not (m == 'batch_time' or m == 'reader_time'):
-            metric_values.append(metric_list[m].value)
+    if mode == 'train':
+        for m in metric_list:
+            if not (m == 'batch_time' or m == 'reader_time' or m == 'precision' or m == 'fscore' or m == 'recall'):
+                metric_values.append(metric_list[m].mean)  # tzw
+            if m == 'lr':
+                metric_values.append(metric_list[m].value)
+    else:
+        for m in metric_list:
+            if not (m == 'batch_time' or m == 'reader_time' or m == 'nCorrect'):
+                metric_values.append(metric_list[m].mean)  # tzw
+            if m == 'lr':
+                metric_values.append(metric_list[m].value)
     metric_str = ' '.join([str(v) for v in metric_values])
     epoch_str = "epoch:[{:>3d}/{:<3d}]".format(epoch_id, total_epoch)
     step_str = "{:s} step:{:<4d}".format(mode, batch_id)

@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import os.path as osp
+import os
 import time
 
 import paddle
@@ -294,6 +295,7 @@ def train_model(cfg,
                 else:
                     outputs = model(data, mode='valid')
 
+
                 if cfg.MODEL.framework == "FastRCNN":
                     results.extend(outputs)
 
@@ -302,7 +304,7 @@ def train_model(cfg,
                     for name, value in outputs.items():
                         if name in record_list:
                             record_list[name].update(value, batch_size)
-
+                                            
                 record_list['batch_time'].update(time.time() - tic)
                 tic = time.time()
 
@@ -329,6 +331,13 @@ def train_model(cfg,
                                                       (parallel and rank == 0)):
                 if record_list["mAP@0.5IOU"].val > best:
                     best = record_list["mAP@0.5IOU"].val
+                    best_flag = True
+                return best, best_flag
+            
+            if cfg.MODEL.framework == "YOWOLocalizer" and (not parallel or
+                                                      (parallel and rank == 0)):
+                if record_list["fscore"].avg > best:
+                    best = record_list["fscore"].avg
                     best_flag = True
                 return best, best_flag
 
@@ -378,6 +387,10 @@ def train_model(cfg,
                 elif cfg.MODEL.framework in ['MSTCN', 'ASRF']:
                     logger.info(
                         f"Already save the best model (F1@0.50){int(best * 10000) / 10000}"
+                    )
+                elif cfg.MODEL.framework in ['YOWOLocalizer']:
+                    logger.info(
+                        f"Already save the best model (fsocre){int(best * 10000) / 10000}"
                     )
                 else:
                     logger.info(
