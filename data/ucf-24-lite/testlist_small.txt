@@ -1,8 +1,8 @@
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00009.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00010.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00011.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00012.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00013.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00014.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00015.txt
-data/ucf-24-lite/labels/Basketball/v_Basketball_g01_c01/00016.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00001.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00002.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00003.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00003.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00005.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00006.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00007.txt
+data/ucf-24-lite/labels/HorseRiding/v_HorseRiding_g01_c03/00008.txt

@@ -21,7 +21,7 @@ amp_train:null
 null:null
 ##
 ===========================eval_params===========================
-eval:main.py -c configs/localization/yowo.yaml --test --seed=1 -w 'output/YOWO/YOWO_epoch_00005.pdparams'
+eval:main.py -c configs/localization/yowo.yaml --test --seed=1 -w 'data/ucf24/YOWO_epoch_00005.pdparams'
 null:null
 ##
 ===========================infer_params===========================

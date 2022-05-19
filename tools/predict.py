@@ -198,6 +198,8 @@ def main():
             (_, filename) = os.path.split(file)
             (filename, _) = os.path.splitext(filename)
             save_dir = osp.join('inference', 'YOWO_infer')
+            if not osp.exists('inference'):
+                os.mkdir('inference')
             if not osp.exists(save_dir):
                 os.mkdir(save_dir)
             save_path = osp.join(save_dir, filename)
