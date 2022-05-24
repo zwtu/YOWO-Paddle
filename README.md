@@ -39,6 +39,15 @@ python data/ucf24/build_split.py
 
 [飞桨 AI Studio](https://aistudio.baidu.com/aistudio/datasetdetail/145592)，存放路径 ``` data/ucf24/ ```
 
+### 3.4 下载所需groundtruth
+
+下载[groundtruths_ucf.zip](https://aistudio.baidu.com/aistudio/datasetdetail/148543)，放至```YOWO-Paddle/data/ucf24```，接着在终端执行以下命令：
+
+```
+cd YOWO-Paddle/data/ucf24
+unzip groundtruths_ucf.zip
+```
+
 ## 4 环境依赖
 
 - GPU：Tesla V100 32G
